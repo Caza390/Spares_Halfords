@@ -49,6 +49,9 @@ watch(() => route.name, loadToolBox);
                 :to="`/tool-boxes/${toolBox.Box.toLowerCase().replace(/\s+/g, '%20')}`"
                 class="bg-halfords-orange-400 w-64 h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
                 <p class="mt-3 font-bold text-black">{{ toolBox.Box }}</p>
+                <div class="w-56 h-36 bg-white border border-black flex items-center justify-center">
+                    <img :src="toolBox.Image" alt="tool-type" class="w-full h-full object-contain" />
+                </div>
             </RouterLink>
         </div>
 
