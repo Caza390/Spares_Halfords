@@ -31,7 +31,11 @@ module.exports = {
           '800': '#454545',
           '900': '#3d3d3d',
           '950': '#242424',  //Grey Background
-        }
+        },
+        'halfords-status': {
+        '50': '#1B7F32', //Green
+        '100': '#C03221', //Red
+        },
       },
 
       spacing: {
