@@ -134,4 +134,12 @@ export default [
     Type: "Adaptors",
     Image: "/Images/Types/Adaptor.jpg",
   },
+
+  /*
+    {
+    ArticleId: "",
+    Type: "",
+    Image: "/Images/Types/.jpg",
+  },
+  */
 ];
