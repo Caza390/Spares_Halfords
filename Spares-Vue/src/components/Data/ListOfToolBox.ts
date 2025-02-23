@@ -24,6 +24,36 @@ export default [
     Box: "8 Piece Hammer, Punch and Chisel Set",
     Image: "/Images/Boxes/8PieceHammerPunchandChiselSet.jpg",
   },
+  {
+    ArticleId: "332942",
+    Box: "10 Piece Extension Bar Set",
+    Image: "/Images/Boxes/10PieceExtensionBarSet.jpg",
+  },
+  {
+    ArticleId: "332910",
+    Box: "11 Piece Combination Spanner Set",
+    Image: "/Images/Boxes/11PieceAFCombinationSpannerSet.jpg",
+  },
+  {
+    ArticleId: "332966",
+    Box: "12 Piece Ratchet Spanner Set",
+    Image: "/Images/Boxes/12PieceRatchetSpannerSet.jpg",
+  },
+  {
+    ArticleId: "332974",
+    Box: "12 Piece Flexhead Ratchet Spanner Set",
+    Image: "/Images/Boxes/12PieceFlexheadRatchetSpannerSet.jpg",
+  },
+  {
+    ArticleId: "332526",
+    Box: "12 Piece Combination Spanner Set",
+    Image: "/Images/Boxes/12PieceCombinationSpannerSet.jpg",
+  },
+  {
+    ArticleId: "332950",
+    Box: `22 Piece 1-2" Impact Socket Set`,
+    Image: "/Images/Boxes/22Piece1QuaterImpactSocketSet.jpg",
+  },
 
   /*
     {
