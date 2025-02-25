@@ -51,8 +51,13 @@ export default [
   },
   {
     ArticleId: "332950",
-    Box: `22 Piece 1-2" Impact Socket Set`,
+    Box: '22 Piece One-Half-Inch Impact Socket Set',
     Image: "/Images/Boxes/22Piece1QuaterImpactSocketSet.jpg",
+  },
+  {
+    ArticleId: "332518",
+    Box: '26 Piece One-Half-Inch Socket Set',
+    Image: "/Images/Boxes/26Piece1QuaterSocketSet.jpg",
   },
 
   /*
