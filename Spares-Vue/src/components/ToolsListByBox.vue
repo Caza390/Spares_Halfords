@@ -15,6 +15,7 @@ const selectedBoxes = computed(() => {
   box = box || '';
   box = box.replace(/one-half-inch/g, '1/2"');
   box = box.replace(/one-quarter-inch/g, '1/4"');
+  box = box.replace(/three-eighths-inch/g, '3/8"');
 
   return box;
 });

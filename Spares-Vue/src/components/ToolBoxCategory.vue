@@ -6,27 +6,40 @@ const route = useRoute();
 const searchQuery = ref("");
 const toolBoxes = ref<any[]>([]);
 
+// Method to replace specific phrases in the box name
+const formatBoxName = (boxName: string) => {
+  console.log("Before formatting:", boxName);  // Log original name
+  const formattedName = boxName
+    .replace(/one-half-inch/g, '1/2"')
+    .replace(/one-quarter-inch/g, '1/4"')
+    .replace(/three-eighths-inch/g, '3/8"');
+  console.log("After formatting:", formattedName);  // Log the formatted name
+  return formattedName;
+};
+
+// Computed property to filter toolboxes based on the search query
 const filteredToolBoxes = computed(() => {
-    return toolBoxes.value.filter((tool) => {
-        const query = searchQuery.value.toLowerCase();
-        return (
-            tool.ArticleId.toLowerCase().includes(query) ||
-            tool.Box.toLowerCase().includes(query)
-        );
-    });
+  return toolBoxes.value.filter((tool) => {
+    const query = searchQuery.value.toLowerCase();
+    return (
+      tool.ArticleId.toLowerCase().includes(query) ||
+      formatBoxName(tool.Box).toLowerCase().includes(query)  // Apply formatted box name during filtering
+    );
+  });
 });
 
+// Load toolboxes when route name changes
 const loadToolBox = async () => {
-    try {
-        console.log("Current route name:", route.name);
-        if (route.name === "tool-boxes") {
-            toolBoxes.value = (await import("../components/Data/ListOfToolBox")).default;
-        } else {
-            toolBoxes.value = [];
-        }
-    } catch (error) {
-        console.error("Error loading tool box:", error);
+  try {
+    console.log("Current route name:", route.name);
+    if (route.name === "tool-boxes") {
+      toolBoxes.value = (await import("../components/Data/ListOfToolBox")).default;
+    } else {
+      toolBoxes.value = [];
     }
+  } catch (error) {
+    console.error("Error loading tool box:", error);
+  }
 };
 
 onMounted(loadToolBox);
@@ -48,9 +61,13 @@ watch(() => route.name, loadToolBox);
             <RouterLink v-for="toolBox in filteredToolBoxes" :key="toolBox.ArticleId"
                 :to="`/tool-boxes/${toolBox.Box.toLowerCase().replace(/\s+/g, '%20')}`"
                 class="bg-halfords-orange-400 w-64 min-h-64 p-4 rounded-lg flex flex-col items-center hover:bg-halfords-orange-500">
+                
                 <div class="h-16 flex items-center justify-center">
-                    <p class="font-bold text-xl text-center break-words">{{ toolBox.Box }}</p>
+                    <p class="font-bold text-xl text-center break-words">
+                        {{ formatBoxName(toolBox.Box) }}  <!-- Use formatted box name here -->
+                    </p>
                 </div>
+                
                 <div class="w-56 h-36 bg-white border border-black flex items-center justify-center">
                     <img :src="toolBox.Image" alt="tool-box" class="w-full h-full object-contain" />
                 </div>
