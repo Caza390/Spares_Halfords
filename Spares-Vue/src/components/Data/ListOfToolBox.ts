@@ -31,7 +31,7 @@ export default [
   },
   {
     ArticleId: "332910",
-    Box: "11 Piece Combination Spanner Set",
+    Box: "11 Piece Combination Spanner Set Sea",
     Image: "/Images/Boxes/11PieceAFCombinationSpannerSet.jpg",
   },
   {
@@ -46,7 +46,7 @@ export default [
   },
   {
     ArticleId: "332526",
-    Box: "12 Piece Combination Spanner Set",
+    Box: "12 Piece Combination Spanner Set Mmm",
     Image: "/Images/Boxes/12PieceCombinationSpannerSet.jpg",
   },
   {

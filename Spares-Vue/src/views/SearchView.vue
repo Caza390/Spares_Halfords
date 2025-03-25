@@ -5,17 +5,27 @@ import ListOfTools from "../components/Data/ListOfTools";
 const searchQuery = ref("");
 const selectedImage = ref<string | null>(null);
 
+const normalizeText = (text: string) => {
+    return text
+        .toLowerCase()
+        .replace(/female/g, "f")
+        .replace(/male/g, "m")
+        .replace(/\bby\b/g, "x")
+        .replace(/["]/g, "")
+        .replace(/\//g, "-")
+        .trim();
+};
+
 const filteredTools = computed(() => {
-  return ListOfTools.filter((tool) => {
-    const query = searchQuery.value.toLowerCase();
-    return (
-      tool.ArticleId.toLowerCase().includes(query) ||
-      tool.TypeName.toLowerCase().includes(query) ||
-      tool.Name.toLowerCase().includes(query) ||
-      tool.Types.toLowerCase().includes(query) ||
-      tool.Boxes.some(set => set.toLowerCase().includes(query))
-    );
-  });
+    const queryWords = normalizeText(searchQuery.value).split(" ");
+
+    return ListOfTools.filter((tool) => {
+        const normalizedToolText = normalizeText(
+            `${tool.ArticleId} ${tool.TypeName} ${tool.Name} ${tool.Types} ${tool.Boxes.join(" ")}`
+        );
+
+        return queryWords.every(word => normalizedToolText.includes(word));
+    });
 });
 
 const openImage = (imageSrc: string) => {
