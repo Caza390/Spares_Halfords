@@ -6,26 +6,26 @@ const searchQuery = ref("");
 const selectedImage = ref<string | null>(null);
 
 const normalizeText = (text: string) => {
-    return text
-        .toLowerCase()
-        .replace(/female/g, "f")
-        .replace(/male/g, "m")
-        .replace(/\bby\b/g, "x")
-        .replace(/["]/g, "")
-        .replace(/\//g, "-")
-        .trim();
+  return text
+    .toLowerCase()
+    .replace(/female/g, "f")
+    .replace(/male/g, "m")
+    .replace(/\bby\b/g, "x")
+    .replace(/["]/g, "")
+    .replace(/\//g, "-")
+    .trim();
 };
 
 const filteredTools = computed(() => {
-    const queryWords = normalizeText(searchQuery.value).split(" ");
+  const queryWords = normalizeText(searchQuery.value).split(" ");
 
-    return ListOfTools.filter((tool) => {
-        const normalizedToolText = normalizeText(
-            `${tool.ArticleId} ${tool.TypeName} ${tool.Name} ${tool.Types} ${tool.Boxes.join(" ")}`
-        );
+  return ListOfTools.filter((tool) => {
+    const normalizedToolText = normalizeText(
+      `${tool.ArticleId} ${tool.TypeName} ${tool.Name} ${tool.Types} ${tool.Boxes.join(" ")}`
+    );
 
-        return queryWords.every(word => normalizedToolText.includes(word));
-    });
+    return queryWords.every(word => normalizedToolText.includes(word));
+  });
 });
 
 const openImage = (imageSrc: string) => {
@@ -43,13 +43,15 @@ const closeImage = () => {
   </div>
 
   <transition name="fade">
-  <div v-if="selectedImage" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50" @click="closeImage">
-    <div class="relative p-4">
-      <img :src="selectedImage" class="max-w-4xl max-h-[80vh] rounded-lg shadow-lg" />
-      <button @click="closeImage" class="absolute top-2 right-2 text-white text-2xl font-bold bg-red-600 px-3 py-1 rounded-lg hover:bg-red-800">X</button>
+    <div v-if="selectedImage" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+      @click="closeImage">
+      <div class="relative p-4">
+        <img :src="selectedImage" class="max-w-4xl max-h-[80vh] rounded-lg shadow-lg" />
+        <button @click="closeImage"
+          class="absolute top-2 right-2 text-white text-2xl font-bold bg-red-600 px-3 py-1 rounded-lg hover:bg-red-800">X</button>
+      </div>
     </div>
-  </div>
-</transition>
+  </transition>
 
   <main class="flex flex-col items-center p-10">
     <h1 class="text-3xl font-bold mb-5">Search All</h1>
@@ -70,11 +72,11 @@ const closeImage = () => {
         <p><strong>Part:</strong> {{ tool.Part }}</p>
         <p class="text-center"><strong>SPARE Name:</strong> {{ tool.TypeName }}</p>
         <p><strong>Type:</strong> {{ tool.Types }}</p>
-        <p :class="{
+        <!--  <p :class="{
           'bg-halfords-status-50 text-white mt-2 px-2 py-1 rounded-lg': tool.Status === 'Available',
           'bg-halfords-status-100 text-white mt-2 px-2 py-1 rounded-lg': tool.Status === 'Discontinued'
-          }"><strong>Status:</strong> {{ tool.Status }}
-        </p>
+        }"><strong>Status:</strong> {{ tool.Status }}
+        </p>  -->
       </div>
     </div>
   </main>
